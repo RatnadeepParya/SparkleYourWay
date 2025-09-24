@@ -1,3 +1,3 @@
 export default function CartItem() {
-  return <nav>CartItem</nav>;
+  return <div>CartItem</div>;
 }

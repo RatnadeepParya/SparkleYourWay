@@ -1,3 +1,7 @@
 export default function AdminSidebar() {
-  return <nav>AdminSidebar</nav>;
+  return (
+    <aside style={{ width: "200px", background: "#eee", padding: "1rem" }}>
+      Sidebar
+    </aside>
+  );
 }

@@ -1,3 +1,3 @@
 export default function ProductCard() {
-  return <nav>ProductCard</nav>;
+  return <div>ProductCard</div>;
 }

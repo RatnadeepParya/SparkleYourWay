@@ -1,3 +1,8 @@
-export default function Page() {
-  return <div>Page Content Here</div>;
+export default function OrdersPage() {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h1>My Orders</h1>
+      <p>List of your orders will appear here.</p>
+    </div>
+  );
 }

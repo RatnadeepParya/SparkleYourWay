@@ -1,9 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-// example route
-router.get("/", (req, res) => {
-  res.json({ message: "Orders API is working!" });
+// Create order
+router.post("/create", (req, res) => {
+  res.json({ message: "Order creation placeholder" });
 });
 
-module.exports = router;
+// Razorpay webhook
+router.post("/webhook", (req, res) => {
+  res.json({ message: "Razorpay webhook placeholder" });
+});
+
+export default router;

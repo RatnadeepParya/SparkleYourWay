@@ -1,3 +1,3 @@
 export default function ProductGrid() {
-  return <nav>ProductGrid</nav>;
+  return <div>ProductGrid</div>;
 }

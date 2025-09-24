@@ -1,3 +1,7 @@
 export default function AdminHeader() {
-  return <nav>AdminHeader</nav>;
+  return (
+    <header style={{ padding: "1rem", background: "#ddd" }}>
+      Admin Header
+    </header>
+  );
 }

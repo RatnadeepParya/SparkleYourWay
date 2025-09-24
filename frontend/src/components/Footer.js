@@ -1,3 +1,5 @@
 export default function Footer() {
-  return <nav>Footer</nav>;
+  return (
+    <footer style={{ padding: "1rem", background: "#f5f5f5" }}>Footer</footer>
+  );
 }

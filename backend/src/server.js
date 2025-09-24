@@ -1,16 +1,21 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const ordersRouter = require("./routes/orders");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.use("/api/orders", ordersRouter);
+// Routes
+import orderRoutes from "./routes/orders.js";
+import productRoutes from "./routes/products.js";
+import adminRoutes from "./routes/admin.js";
+
+app.use("/api/orders", orderRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () =>
-  console.log(`Backend running on http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
