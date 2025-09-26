@@ -4,29 +4,39 @@ import { ShoppingCart, User } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="bg-white shadow">
+      <nav className="container mx-auto flex justify-between items-center py-4 px-6">
+        {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-pink-600">
           ✨ Sparkle Your Way
         </Link>
-        <div className="flex gap-6 items-center">
+
+        {/* Navigation Links */}
+        <div className="flex items-center space-x-6">
           <Link href="/products" className="hover:text-pink-600">
             Products
           </Link>
-          <Link
-            href="/cart"
-            className="hover:text-pink-600 flex items-center gap-1"
-          >
-            <ShoppingCart size={20} /> Cart
+          <Link href="/about" className="hover:text-pink-600">
+            About
           </Link>
+          <Link href="/contact" className="hover:text-pink-600">
+            Contact
+          </Link>
+
+          {/* Cart */}
+          <Link href="/cart" className="flex items-center hover:text-pink-600">
+            <ShoppingCart className="w-5 h-5 mr-1" /> Cart
+          </Link>
+
+          {/* Profile / Login */}
           <Link
-            href="/login"
-            className="hover:text-pink-600 flex items-center gap-1"
+            href="/profile"
+            className="flex items-center hover:text-pink-600"
           >
-            <User size={20} /> Login
+            <User className="w-5 h-5 mr-1" /> Profile
           </Link>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

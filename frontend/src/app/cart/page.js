@@ -1,8 +1,8 @@
-export default function CartPage() {
+export default function Cart() {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Shopping Cart</h1>
-      <p>Your cart items will appear here.</p>
-    </div>
+    <section className="container mx-auto px-6 py-12">
+      <h1 className="text-3xl font-semibold mb-6">Your Cart</h1>
+      <p className="text-gray-600">Your cart is empty.</p>
+    </section>
   );
 }
