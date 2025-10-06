@@ -8,44 +8,44 @@ Supports **product display, orders, Razorpay payments, Shiprocket deliveries, SM
 ![Firebase](https://img.shields.io/badge/Firebase-Realtime%20DB-orange?logo=firebase)  
 ![Razorpay](https://img.shields.io/badge/Payments-Razorpay-blue?logo=razorpay)  
 ![Shiprocket](https://img.shields.io/badge/Shipping-Shiprocket-purple)  
-![Twilio](https://img.shields.io/badge/SMS-Twilio-red?logo=twilio) 
+![Twilio](https://img.shields.io/badge/SMS-Twilio-red?logo=twilio)
 
 ---
 
 ## 🌟 Features
 
-* 🛍 **Public Storefront**
+- 🛍 **Public Storefront**
 
-  * Browse jewellery collections
-  * Product detail pages with images from Firebase Storage
-  * Cart & secure checkout with Razorpay
-  * Order tracking with Shiprocket
+  - Browse jewellery collections
+  - Product detail pages with images from Firebase Storage
+  - Cart & secure checkout with Razorpay
+  - Order tracking with Shiprocket
 
-* 🛠 **Admin Panel**
+- 🛠 **Admin Panel**
 
-  * Manage products (CRUD + image uploads)
-  * Manage offers & daily specials
-  * View, filter, export orders
-  * Shipment creation & tracking
-  * Role-based access
+  - Manage products (CRUD + image uploads)
+  - Manage offers & daily specials
+  - View, filter, export orders
+  - Shipment creation & tracking
+  - Role-based access
 
-* 💳 **Payments & Shipping**
+- 💳 **Payments & Shipping**
 
-  * Razorpay payment gateway integration
-  * Cash on Delivery (COD) option
-  * Shiprocket API for automated shipments
+  - Razorpay payment gateway integration
+  - Cash on Delivery (COD) option
+  - Shiprocket API for automated shipments
 
-* 📩 **Notifications**
+- 📩 **Notifications**
 
-  * SMS alerts (Twilio / MSG91)
-  * Transactional emails (SendGrid / Mailgun)
+  - SMS alerts (Twilio / MSG91)
+  - Transactional emails (SendGrid / Mailgun)
 
-* 🔐 **Security & Reliability**
+- 🔐 **Security & Reliability**
 
-  * Firebase Authentication (Users + Admin roles)
-  * Firebase Realtime Database rules
-  * Encrypted environment variables
-  * Webhook verification for Razorpay
+  - Firebase Authentication (Users + Admin roles)
+  - Firebase Realtime Database rules
+  - Encrypted environment variables
+  - Webhook verification for Razorpay
 
 ---
 
@@ -85,9 +85,22 @@ Backend (Express.js on Firebase Functions / Cloud Run)
     "order_abc": {
       "userId": "user_123",
       "items": [{ "productId": "prod_123", "qty": 2 }],
-      "amounts": { "subtotal": 5000, "tax": 250, "deliveryCharge": 30, "total": 5280 },
-      "payment": { "method": "razorpay", "status": "paid", "paymentId": "pay_xyz" },
-      "shipping": { "name": "Jane Doe", "pin": "700001", "shiprocket": { "awb": "SR123" } },
+      "amounts": {
+        "subtotal": 5000,
+        "tax": 250,
+        "deliveryCharge": 30,
+        "total": 5280
+      },
+      "payment": {
+        "method": "razorpay",
+        "status": "paid",
+        "paymentId": "pay_xyz"
+      },
+      "shipping": {
+        "name": "Jane Doe",
+        "pin": "700001",
+        "shiprocket": { "awb": "SR123" }
+      },
       "status": "shipped"
     }
   }
@@ -100,22 +113,22 @@ Backend (Express.js on Firebase Functions / Cloud Run)
 
 **Frontend**
 
-* [Next.js](https://nextjs.org/) (React framework, SEO-friendly)
-* [TailwindCSS](https://tailwindcss.com/) (modern styling)
-* Axios for API calls
+- [Next.js](https://nextjs.org/) (React framework, SEO-friendly)
+- [TailwindCSS](https://tailwindcss.com/) (modern styling)
+- Axios for API calls
 
 **Backend**
 
-* [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
-* Hosted on Firebase Functions / Google Cloud Run
+- [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
+- Hosted on Firebase Functions / Google Cloud Run
 
 **Services**
 
-* **Database**: Firebase Realtime Database
-* **Storage**: Firebase Storage
-* **Payments**: Razorpay
-* **Shipping**: Shiprocket API
-* **Notifications**: Twilio (SMS)
+- **Database**: Firebase Realtime Database
+- **Storage**: Firebase Storage
+- **Payments**: Razorpay
+- **Shipping**: Shiprocket API
+- **Notifications**: Twilio (SMS)
 
 ---
 
@@ -173,12 +186,25 @@ Create a `.env` in **backend/**:
 
 ```
 PORT=4000
-RZP_KEY_ID=
-RZP_KEY_SECRET=
-RZP_WEBHOOK_SECRET=
-SHIPROCKET_EMAIL=
-SHIPROCKET_PASSWORD=
-FIREBASE_DB_URL=
+RZP_KEY_ID=""
+RZP_KEY_SECRET=""
+RZP_WEBHOOK_SECRET=""
+SHIPROCKET_EMAIL=""
+SHIPROCKET_PASSWORD=""
+FIREBASE_DB_URL=""
+```
+
+Create a `.env` in **frontend/**:
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=""
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=""
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=""
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=""
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=""
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=""
+NEXT_PUBLIC_FIREBASE_APP_ID=""
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
 ```
 
 ---
@@ -196,28 +222,28 @@ FIREBASE_DB_URL=
 
 ## 🔐 Security
 
-* Firebase Auth with **custom admin claims**
-* Validation on backend (never trust client prices)
-* Secure Razorpay webhooks with signature verification
-* Restrictive Firebase Database rules
+- Firebase Auth with **custom admin claims**
+- Validation on backend (never trust client prices)
+- Secure Razorpay webhooks with signature verification
+- Restrictive Firebase Database rules
 
 ---
 
 ## 🚢 Deployment
 
-* **Frontend**: Firebase Hosting
-* **Backend**: Firebase Functions
-* **Database/Storage**: Firebase
-* **CI/CD**: GitHub Actions (build & deploy on push)
+- **Frontend**: Firebase Hosting
+- **Backend**: Firebase Functions
+- **Database/Storage**: Firebase
+- **CI/CD**: GitHub Actions (build & deploy on push)
 
 ---
 
 ## 🛠 Future Enhancements
 
-* Wishlist & Favorites
-* Coupons & Gift Cards
-* Advanced Analytics Dashboard
-* Multi-language & Multi-currency
+- Wishlist & Favorites
+- Coupons & Gift Cards
+- Advanced Analytics Dashboard
+- Multi-language & Multi-currency
 
 ---
 

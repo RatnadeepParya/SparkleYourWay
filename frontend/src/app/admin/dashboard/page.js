@@ -1,9 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { app } from "@/firebaseConfig";
-
-const db = getDatabase(app);
+import { auth, db, storage } from "../../../lib/firebase";
 
 export default function Dashboard() {
   const [stats, setStats] = useState({ products: 0, featured: 0 });
