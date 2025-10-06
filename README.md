@@ -209,6 +209,47 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
 
 ---
 
+## 🔑 Environment Variables
+
+Edit Firebase Realtime Database rules to:
+
+```
+{
+  "rules": {
+    "admins": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && root.child('admins').child(auth.uid).exists()"
+      }
+    },
+    "products": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).exists()",
+      ".write": "auth != null && root.child('admins').child(auth.uid).exists()"
+    }
+  }
+}
+```
+
+Edit Firebase Storage rules to:
+
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /products/{allImages=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
+```
+
+---
+
 ## 📬 API Endpoints (Example)
 
 | Method | Endpoint                 | Description             |
