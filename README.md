@@ -71,6 +71,11 @@ Backend (Express.js on Firebase Functions / Cloud Run)
 
 ```json
 {
+  "admins": {
+    "UID1": true,
+    "UID2": true,
+    "UID3": true
+  },
   "products": {
     "prod_123": {
       "title": "Gold Pendant",
@@ -172,6 +177,7 @@ node src/server.js
 ```bash
 cd ../frontend
 npm install
+vi .env   # Add your secrets
 npm run dev
 ```
 
@@ -209,11 +215,11 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
 
 ---
 
-## 🔑 Environment Variables
+## 🔑 Firebase Rules
 
 Edit Firebase Realtime Database rules to:
 
-```
+```json
 {
   "rules": {
     "admins": {
@@ -223,7 +229,7 @@ Edit Firebase Realtime Database rules to:
       }
     },
     "products": {
-      ".read": "auth != null && root.child('admins').child(auth.uid).exists()",
+      ".read": true,
       ".write": "auth != null && root.child('admins').child(auth.uid).exists()"
     }
   }
@@ -232,13 +238,21 @@ Edit Firebase Realtime Database rules to:
 
 Edit Firebase Storage rules to:
 
-```
+```javascript
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
+
     match /products/{allImages=**} {
+      // anyone can read
       allow read: if true;
-      allow write: if request.auth != null;
+
+      // only these UIDs can write
+      allow write: if request.auth != null && (
+        request.auth.uid == "UID1" ||
+        request.auth.uid == "UID2" ||
+        request.auth.uid == "UID3"
+      );
     }
 
     match /{allPaths=**} {
